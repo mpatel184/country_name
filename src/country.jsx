@@ -6,10 +6,14 @@ export default function Country(){
     const [data,setData] = useState([])
 
     const fetchData = async() => {
-        const response = await axios.get("https://xcountries-backend.azurewebsites.net/all")
-        setData(response.data)
-    }
+        try {
+            const response = await axios.get("https://xcountries-backend.azurewebsites.net/all")
+            setData(response.data)
+        } catch (error) {
+            console.log(error)
+        }
 
+    }
     useEffect(() => {
         fetchData()
     },[])
